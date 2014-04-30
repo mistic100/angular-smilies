@@ -1,7 +1,7 @@
 # AngularJS Smilies filter & directive
 
 ## Dependencies
- * Angular Sanitize (for the filter)
+ * [Angular Sanitize](https://github.com/angular/bower-angular-sanitize) (for the filter)
 
 ## Installation
  1. The module is available on Bower. Add `angular-smilies` to your `bower.json` file or install it manually:
@@ -15,10 +15,10 @@
 ## Usage
 Add the module to your application:
 ```javascript
-var app = angular.module('app', [/* ... */, 'angular-smilies']);
+var app = angular.module('app', [/* ... */, 'angular-smilies', 'ngSanitize']);
 ```
 ### As filter
-The module exposes the `smilies` filter useable with the `ngBingHtml` directive (from _angular-sanitize_):
+The module exposes the `smilies` filter useable with the `ngBindHtml` directive (from _angular-sanitize_):
 ```html
 <div ng-bind-html="message | smilies"></div>
 ```
