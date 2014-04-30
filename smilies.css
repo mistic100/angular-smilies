@@ -1,0 +1,36 @@
+/*!
+ * Angular Smilies 1.0.0-SNAPSHOT
+ * Copyright 2014 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Licensed under MIT (http://opensource.org/licenses/MIT)
+ */
+[class*="smiley-"] {
+  display:inline-block;
+  width:18px;
+  height:18px;
+  background-image:url('smilies.png');
+  background-position:18px 18px;
+  background-repeat:no-repeat;
+}
+.smiley-biggrin { background-position:0 0; }
+.smiley-confused { background-position:-18px 0; }
+.smiley-cool { background-position:-36px 0; }
+.smiley-cry { background-position:-54px 0; }
+.smiley-eek { background-position:0 -18px; }
+.smiley-evil { background-position:-18px -18px; }
+.smiley-like { background-position:-36px -18px; }
+.smiley-lol { background-position:-54px -18px; }
+.smiley-love { background-position:0 -36px; }
+.smiley-mad { background-position:-18px -36px; }
+.smiley-mrgreen { background-position:-36px -36px; }
+.smiley-neutral { background-position:-54px -36px; }
+.smiley-question { background-position:0 -54px; }
+.smiley-razz { background-position:-18px -54px; }
+.smiley-redface { background-position:-36px -54px; }
+.smiley-rolleyes { background-position:-54px -54px; }
+.smiley-sad { background-position:-72px 0; }
+.smiley-smile { background-position:-72px -18px; }
+.smiley-surprised { background-position:-72px -36px; }
+.smiley-thumbdown { background-position:-72px -54px; }
+.smiley-thumbup { background-position:0 -72px; }
+.smiley-twisted { background-position:-18px -72px; }
+.smiley-wink { background-position:-36px -72px; }
