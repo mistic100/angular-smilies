@@ -7,7 +7,7 @@
 
     var
     smilies = [
-        'biggrin', 'confused.', 'cool', 'cry', 'eek', 'evil', 'like',
+        'biggrin', 'confused', 'cool', 'cry', 'eek', 'evil', 'like',
         'lol', 'love', 'mad', 'mrgreen', 'neutral', 'question', 'razz',
         'redface', 'rolleyes', 'sad', 'smile', 'surprised', 'thumbdown',
         'thumbup', 'twisted', 'wink'
@@ -55,9 +55,11 @@
 
 
     angular.module('angular-smilies', [])
+    /* smilies parser filter */
     .filter('smilies', function() {
         return apply;
     })
+    /* smilies parser attribute */
     .directive('smilies', function() {
         return {
             restrict: 'A',
@@ -68,6 +70,49 @@
                 el.html(apply($scope.source));
             }
         };
-    });
+    })
+    /* smilies selector directive */
+    .directive('smiliesSelector', ['$timeout', function($timeout) {
+        return {
+            restrict: 'A',
+            template: '<i class="smiley-smile" '+
+                'popover-template="template/smilies/popover.html" '+
+                'popover-placement="left" '+
+                'popover-title="Smilies"></i>',
+            scope: {
+                source: '=smiliesSelector'
+            },
+            link: function($scope, el) {
+                $scope.smilies = smilies;
+                
+                $scope.append = function(smiley) {
+                    $scope.source+= ' :'+smiley+': ';
+                    
+                    $timeout(function() {
+                        el.children('i').trigger('click');
+                    });
+                };
+            }
+        };
+    }])
+    /* helper directive for input focusing */
+    .directive('focusOnChange', ['$timeout', function($timeout) {
+        return {
+            restrict: 'A',
+            link: function($scope, el, attrs) {
+                $scope.$watch(attrs.focusOnChange, function() {
+                    el[0].focus();
+                });
+            }
+        };
+    }])
+    /* popover template */
+    .run(["$templateCache", function($templateCache) {
+        $templateCache.put('template/smilies/popover.html',
+            '<div ng-model="smilies" style="max-width:130px;">'+
+              '<i class="smiley-{{smiley}}" ng-repeat="smiley in smilies" ng-click="append(smiley)"></i>'+
+            '</div>'
+        );
+    }]);
 
 }());
