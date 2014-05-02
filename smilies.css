@@ -1,5 +1,5 @@
 /*!
- * Angular Smilies 1.0.0-SNAPSHOT
+ * Angular Smilies 1.0.0
  * Copyright 2014 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
