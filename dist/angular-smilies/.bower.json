@@ -1,0 +1,42 @@
+{
+  "name": "angular-smilies",
+  "authors": [
+    {
+      "name": "Damien \"Mistic\" Sorel",
+      "homepage": "http://www.strangeplanet.fr"
+    }
+  ],
+  "description": "AngularJS filter & directive for smilies parsing",
+  "main": [
+    "dist/smilies.js",
+    "dist/smilies.css"
+  ],
+  "keywords": [
+    "angularjs",
+    "smiley",
+    "smilies",
+    "emoji"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mistic100/angular-smilies",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mistic100/angular-smilies.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "a6cd73939d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a6cd73939d40511e8768cbc155f8bed089e780ab"
+  },
+  "_source": "git://github.com/mistic100/angular-smilies.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/mistic100/angular-smilies.git"
+}
