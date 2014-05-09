@@ -73,9 +73,25 @@
     })
     /* smilies selector directive */
     .directive('smiliesSelector', ['$timeout', function($timeout) {
+        var templateUrl;
+        try {
+            angular.module('ui.bootstrap.popover');
+            templateUrl = 'template/smilies/button-a.html';
+        }
+        catch(e) {
+            try {
+                angular.module('mgcrea.ngStrap.popover');
+                templateUrl = 'template/smilies/button-b.html';
+            }
+            catch(e) {
+                console.error('No Popover module found');
+                return {};
+            }
+        }
+
         return {
             restrict: 'A',
-            templateUrl: 'template/smilies/button.html',
+            templateUrl: templateUrl,
             scope: {
                 source: '=smiliesSelector',
                 placement: '@smiliesPlacement',
@@ -88,11 +104,12 @@
                     $scope.source+= ' :'+smiley+': ';
                     
                     $timeout(function() {
-                        el.children('i').trigger('click');
+                        el.find('i').triggerHandler('click');
                     });
                 };
             }
         };
+
     }])
     /* helper directive for input focusing */
     .directive('focusOnChange', function($timeout) {
@@ -106,16 +123,31 @@
         };
     })
     /* popover template */
-    .run(["$templateCache", function($templateCache) {
-        $templateCache.put('template/smilies/button.html',
+    .run(['$templateCache', function($templateCache) {
+        $templateCache.put('template/smilies/button-a.html',
             '<i class="smiley-smile smilies-selector" '+
-                'popover-template="template/smilies/popover.html" '+
+                'popover-template="template/smilies/popover-a.html" '+
                 'popover-placement="{{!placement && \'left\' || placement}}" '+
                 'popover-title="{{title}}"></i>'
         );
-        $templateCache.put('template/smilies/popover.html',
+        $templateCache.put('template/smilies/button-b.html',
+            '<i class="smiley-smile smilies-selector" bs-popover '+
+                'data-template="template/smilies/popover-b.html" '+
+                'data-placement="{{!placement && \'left\' || placement}}" '+
+                'title="{{title}}"></i>'
+        );
+        $templateCache.put('template/smilies/popover-a.html',
             '<div ng-model="smilies" class="smilies-selector-content">'+
               '<i class="smiley-{{smiley}}" ng-repeat="smiley in smilies" ng-click="append(smiley)"></i>'+
+            '</div>'
+        );
+        $templateCache.put('template/smilies/popover-b.html',
+            '<div class="popover" tabindex="-1">'+
+                '<div class="arrow"></div>'+
+                '<h3 class="popover-title" ng-bind-html="title" ng-show="title"></h3>'+
+                '<div class="popover-content">'+
+                    $templateCache.get('template/smilies/popover-a.html') +
+                '</div>'+
             '</div>'
         );
     }]);

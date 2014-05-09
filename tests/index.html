@@ -13,20 +13,23 @@
   <pre ng-bind-html="message | smilies"></pre>
 
   <div class="input-group">
-    <span class="input-group-addon" smilies-selector="message" smilies-placement="right" smilies-title=""></span>
+    <span class="input-group-addon" smilies-selector="message" smilies-placement="bottom" smilies-title="Smilies"></span>
     <input ng-model="message" focus-on-change="message" class="form-control">
   </div>
 </div>
 
 <script src="../bower_components/angular/angular.min.js"></script>
 <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<!--<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>-->
+<script src="../bower_components/angular-strap/dist/angular-strap.min.js"></script>
+<script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
 <script src="../smilies.js"></script>
 
 <script>
   var app = angular.module('app', [
     'ngSanitize',
-    'ui.bootstrap',
+    //'ui.bootstrap', // Angular UI Bootstrap
+    'mgcrea.ngStrap', // Angular Strap
     'angular-smilies'
   ]);
 
