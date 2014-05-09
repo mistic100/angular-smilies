@@ -75,12 +75,11 @@
     .directive('smiliesSelector', ['$timeout', function($timeout) {
         return {
             restrict: 'A',
-            template: '<i class="smiley-smile" '+
-                'popover-template="template/smilies/popover.html" '+
-                'popover-placement="left" '+
-                'popover-title="Smilies"></i>',
+            templateUrl: 'template/smilies/button.html',
             scope: {
-                source: '=smiliesSelector'
+                source: '=smiliesSelector',
+                placement: '@smiliesPlacement',
+                title: '@smiliesTitle'
             },
             link: function($scope, el) {
                 $scope.smilies = smilies;
@@ -96,7 +95,7 @@
         };
     }])
     /* helper directive for input focusing */
-    .directive('focusOnChange', ['$timeout', function($timeout) {
+    .directive('focusOnChange', function($timeout) {
         return {
             restrict: 'A',
             link: function($scope, el, attrs) {
@@ -105,11 +104,17 @@
                 });
             }
         };
-    }])
+    })
     /* popover template */
     .run(["$templateCache", function($templateCache) {
+        $templateCache.put('template/smilies/button.html',
+            '<i class="smiley-smile smilies-selector" '+
+                'popover-template="template/smilies/popover.html" '+
+                'popover-placement="{{!placement && \'left\' || placement}}" '+
+                'popover-title="{{title}}"></i>'
+        );
         $templateCache.put('template/smilies/popover.html',
-            '<div ng-model="smilies" style="max-width:130px;">'+
+            '<div ng-model="smilies" class="smilies-selector-content">'+
               '<i class="smiley-{{smiley}}" ng-repeat="smiley in smilies" ng-click="append(smiley)"></i>'+
             '</div>'
         );

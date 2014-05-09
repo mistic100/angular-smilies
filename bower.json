@@ -10,6 +10,15 @@
     "dist/smilies.js",
     "dist/smilies.css"
 	],
+  "dependencies": {
+    "angular": "1.x",
+    "angular-sanitize" : "1.x"
+  },
+  "devDependencies": {
+    "bootstrap": "3.x",
+    "angular-bootstrap": "https://github.com/jbruni/bootstrap-bower-jbruni.git#master",
+    "angular-strap": "2.x"
+  },
   "keywords": [
     "angularjs",
     "smiley",
