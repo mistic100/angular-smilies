@@ -1,5 +1,5 @@
 /*!
- * Angular Smilies 1.0.0
+ * Angular Smilies 1.0.1
  * Copyright 2014 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
@@ -34,3 +34,8 @@
 .smiley-thumbup { background-position:0 -72px; }
 .smiley-twisted { background-position:-18px -72px; }
 .smiley-wink { background-position:-36px -72px; }
+
+.smilies-selector-content {
+  margin:0 -6px;
+  max-width:130px;
+}

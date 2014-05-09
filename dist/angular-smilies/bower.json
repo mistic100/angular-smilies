@@ -1,6 +1,6 @@
 {
   "name": "angular-smilies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [{
     "name": "Damien \"Mistic\" Sorel",
     "homepage": "http://www.strangeplanet.fr"
@@ -10,6 +10,15 @@
     "dist/smilies.js",
     "dist/smilies.css"
 	],
+  "dependencies": {
+    "angular": "1.x",
+    "angular-sanitize" : "1.x"
+  },
+  "devDependencies": {
+    "bootstrap": "3.x",
+    "angular-bootstrap": "https://github.com/jbruni/bootstrap-bower-jbruni.git#master",
+    "angular-strap": "2.x"
+  },
   "keywords": [
     "angularjs",
     "smiley",

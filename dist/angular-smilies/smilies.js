@@ -1,5 +1,5 @@
 /*!
- * Angular Smilies 1.0.0
+ * Angular Smilies 1.0.1
  * Copyright 2014 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
@@ -73,14 +73,29 @@
     })
     /* smilies selector directive */
     .directive('smiliesSelector', ['$timeout', function($timeout) {
+        var templateUrl;
+        try {
+            angular.module('ui.bootstrap.popover');
+            templateUrl = 'template/smilies/button-a.html';
+        }
+        catch(e) {
+            try {
+                angular.module('mgcrea.ngStrap.popover');
+                templateUrl = 'template/smilies/button-b.html';
+            }
+            catch(e) {
+                console.error('No Popover module found');
+                return {};
+            }
+        }
+
         return {
             restrict: 'A',
-            template: '<i class="smiley-smile" '+
-                'popover-template="template/smilies/popover.html" '+
-                'popover-placement="left" '+
-                'popover-title="Smilies"></i>',
+            templateUrl: templateUrl,
             scope: {
-                source: '=smiliesSelector'
+                source: '=smiliesSelector',
+                placement: '@smiliesPlacement',
+                title: '@smiliesTitle'
             },
             link: function($scope, el) {
                 $scope.smilies = smilies;
@@ -89,14 +104,15 @@
                     $scope.source+= ' :'+smiley+': ';
                     
                     $timeout(function() {
-                        el.children('i').trigger('click');
+                        el.find('i').triggerHandler('click');
                     });
                 };
             }
         };
+
     }])
     /* helper directive for input focusing */
-    .directive('focusOnChange', ['$timeout', function($timeout) {
+    .directive('focusOnChange', function($timeout) {
         return {
             restrict: 'A',
             link: function($scope, el, attrs) {
@@ -105,12 +121,33 @@
                 });
             }
         };
-    }])
+    })
     /* popover template */
-    .run(["$templateCache", function($templateCache) {
-        $templateCache.put('template/smilies/popover.html',
-            '<div ng-model="smilies" style="max-width:130px;">'+
+    .run(['$templateCache', function($templateCache) {
+        $templateCache.put('template/smilies/button-a.html',
+            '<i class="smiley-smile smilies-selector" '+
+                'popover-template="template/smilies/popover-a.html" '+
+                'popover-placement="{{!placement && \'left\' || placement}}" '+
+                'popover-title="{{title}}"></i>'
+        );
+        $templateCache.put('template/smilies/button-b.html',
+            '<i class="smiley-smile smilies-selector" bs-popover '+
+                'data-template="template/smilies/popover-b.html" '+
+                'data-placement="{{!placement && \'left\' || placement}}" '+
+                'title="{{title}}"></i>'
+        );
+        $templateCache.put('template/smilies/popover-a.html',
+            '<div ng-model="smilies" class="smilies-selector-content">'+
               '<i class="smiley-{{smiley}}" ng-repeat="smiley in smilies" ng-click="append(smiley)"></i>'+
+            '</div>'
+        );
+        $templateCache.put('template/smilies/popover-b.html',
+            '<div class="popover" tabindex="-1">'+
+                '<div class="arrow"></div>'+
+                '<h3 class="popover-title" ng-bind-html="title" ng-show="title"></h3>'+
+                '<div class="popover-content">'+
+                    $templateCache.get('template/smilies/popover-a.html') +
+                '</div>'+
             '</div>'
         );
     }]);

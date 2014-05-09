@@ -1,2 +1,8 @@
 /_site
 Gemfile.lock
+
+/dist/bootstrap
+/dist/jquery
+/dist/angular-strap/*
+!/dist/angular-strap/dist
+/dist/angular-strap/dist/modules

@@ -18,7 +18,7 @@ isHome: true
     <pre ng-bind-html="message | smilies"></pre>
 
     <div class="input-group">
-      <span class="input-group-addon" smilies-selector="message"></span>
+      <span class="input-group-addon" smilies-selector="message" smilies-placement="right"smilies-title="Smilies"></span>
       <input ng-model="message" focus-on-change="message" class="form-control">
     </div>
   </div>
@@ -27,7 +27,7 @@ isHome: true
 
 <div class="input-group">
   <input ng-model="message" focus-on-change="message" class="form-control">
-  <span class="input-group-addon" smilies-selector="message"></span>
+  <span class="input-group-addon" smilies-selector="message" smilies-placement="right" smilies-title="Smilies"></span>
 </div>
 {% endhighlight %}
 
@@ -45,22 +45,31 @@ isHome: true
   <h1 id="installation" class="page-header">Installation</h1>
 
   <h2 id="dependencies">Dependencies</h2>
+  <h4>ngSanitize</h4>
   <p>In order to use the filters (which outputs HTML) you will need the <code>ngBindHtml</code> directive which is part of <a href="https://github.com/angular/bower-angular-sanitize">ngSanitize</a> module.</p>
-  <p>The smiley picker use <a href="http://angular-ui.github.io/bootstrap/#/popover">AngularUI Popover</a> module, BUT the official release does not support yet templates as Popover content, thus you will need <a href="https://github.com/jbruni/bootstrap-bower-jbruni">the fork of J Bruni</a>. Angular Smilies will be updated as soon as the feature is integrated in the official release.</p>
+
+  <h4>Angular Strap &amp; AngularUI</h4>
+  <p>The smiley picker uses Bootstrap Popover as Angular module. You can use either <a href="http://mgcrea.github.io/angular-strap">Angular Strap</a> or <a href="http://angular-ui.github.io/bootstrap">AngularUI</a>. The lastest does not support templates yet, thus you will need to use <a href="https://github.com/jbruni/bootstrap-bower-jbruni">the fork of J Bruni</a>.</p>
 
   <h2 id="includes">Includes</h2>
-  <p>The module is available on Bower. Add <code>angular-smilies</code> to your <code>bower.json</code> file or install ir manually with <code>bower install angular-smilies</code>.
+  <p>The module is available on Bower. Add <code>angular-smilies</code> to your <code>bower.json</code> file or install it manually with <code>bower install angular-smilies</code>.
 
   <p>Include the Javascript files...</p>
 {% highlight html %}
 <script src="dist/angular/angular.min.js"></script>
 <script src="dist/angular-sanitize/angular-sanitize.min.js"></script>
-<script src="dist/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+<script src="dist/angular-strap/dist/angular-strap.min.js"></script>
+<script src="dist/angular-strap/dist/angular-strap.tpl.min.js"></script>
+<!-- OR <script src="dist/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> -->
+
 <script src="dist/angular-smilies/smilies.js"></script>
 {% endhighlight %}
 
-  <p>... and include the stylesheet. The embed version contains the smilies sprite coded in base64 where the normal version relies on an external file. The embed version weighs a little more because of the coding but saves one HTTP request.</p>
+  <p>... and include the stylesheet as well as Bootstrap's one. The embed version contains the smilies sprite coded in base64 where the normal version relies on an external file. The embed version weighs a little more because of the coding but saves one HTTP request.</p>
 {% highlight html %}
+<link rel="stylesheet" href="dist/bootstrap/dist/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="dist/angular-smilies/smilies.css">
 <!-- OR -->
 <link rel="stylesheet" href="dist/angular-smilies/smilies-embed.css">
@@ -75,7 +84,7 @@ isHome: true
 {% highlight javascript %}
 var app = angular.module('app', [
   'ngSanitize',
-  'ui.bootstrap',
+  'mgcrea.ngStrap', // OR ui.bootstrap
   'angular-smilies'
 ]);
 {% endhighlight %}
@@ -94,7 +103,7 @@ var app = angular.module('app', [
 {% highlight html %}
 <div class="input-group">
   <input ng-model="message" focus-on-change="message" class="form-control">
-  <span class="input-group-addon" smilies-selector="message"></span>
+  <span class="input-group-addon" smilies-selector="message" smilies-placement="right" smilies-title="Smilies"></span>
 </div>
 {% endhighlight %}
   
@@ -104,13 +113,14 @@ var app = angular.module('app', [
 <link rel="stylesheet" href="{{site.baseurl}}/dist/angular-smilies/smilies-embed.css">
 <script src="{{site.baseurl}}/dist/angular/angular.min.js"></script>
 <script src="{{site.baseurl}}/dist/angular-sanitize/angular-sanitize.min.js"></script>
-<script src="{{site.baseurl}}/dist/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="{{site.baseurl}}/dist/angular-strap/dist/angular-strap.min.js"></script>
+<script src="{{site.baseurl}}/dist/angular-strap/dist/angular-strap.tpl.min.js"></script>
 <script src="{{site.baseurl}}/dist/angular-smilies/smilies.js"></script>
 
 <script>
 var app = angular.module('app', [
   'ngSanitize',
-  'ui.bootstrap',
+  'mgcrea.ngStrap',
   'angular-smilies'
 ]);
 

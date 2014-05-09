@@ -11,6 +11,15 @@
     "dist/smilies.js",
     "dist/smilies.css"
   ],
+  "dependencies": {
+    "angular": "1.x",
+    "angular-sanitize": "1.x"
+  },
+  "devDependencies": {
+    "bootstrap": "3.x",
+    "angular-bootstrap": "https://github.com/jbruni/bootstrap-bower-jbruni.git#master",
+    "angular-strap": "2.x"
+  },
   "keywords": [
     "angularjs",
     "smiley",
@@ -30,11 +39,11 @@
     "test",
     "tests"
   ],
-  "_release": "a6cd73939d",
+  "_release": "ea455301a8",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "a6cd73939d40511e8768cbc155f8bed089e780ab"
+    "commit": "ea455301a8a8595e5a16c26a5545d691db50d529"
   },
   "_source": "git://github.com/mistic100/angular-smilies.git",
   "_target": "master",
