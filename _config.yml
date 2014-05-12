@@ -6,7 +6,7 @@ baseurl: http://mistic100.github.io/angular-smilies
 # name of the software
 name: Angular Smilies
 # current version of the software
-version: 1.0.0
+version: 1.0.1
 # url of the download button
 downloadUrl: https://github.com/mistic100/angular-smilies
 # licence of the software
