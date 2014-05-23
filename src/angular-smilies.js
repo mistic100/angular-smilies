@@ -19,7 +19,7 @@
     
     regExpForShort = function(str) {
         if (/^[a-z]+$/i.test(str)) { // use word boundaries if emoji is letters only
-            return new RegExp('\b'+ str +'\b', 'gi');
+            return new RegExp('\\b'+ str +'\\b', 'gi');
         }
         else {
             return new RegExp(escapeRegExp(str), 'gi');

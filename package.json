@@ -10,7 +10,7 @@
     "dist/angular-smilies.min.js",
     "dist/angular-smilies.min.css",
     "dist/angular-smilies.png"
-	],
+  ],
   "devDependencies": {
     "underscore": "~1.6.0",
     "grunt": "~0.4.5",

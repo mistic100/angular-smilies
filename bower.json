@@ -10,7 +10,7 @@
     "dist/angular-smilies.min.js",
     "dist/angular-smilies.min.css",
     "dist/angular-smilies.png"
-	],
+  ],
   "dependencies": {
     "angular": "1.x",
     "angular-sanitize" : "1.x"
