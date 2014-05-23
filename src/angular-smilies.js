@@ -7,14 +7,7 @@
 
     var
     main = smiliesConfig.main,
-
-    smilies = [
-        'biggrin', 'confused', 'cool', 'cry', 'eek', 'evil', 'like',
-        'lol', 'love', 'mad', 'mrgreen', 'neutral', 'question', 'razz',
-        'redface', 'rolleyes', 'sad', 'smile', 'surprised', 'thumbdown',
-        'thumbup', 'twisted', 'wink'
-    ],
-
+    smilies = smiliesConfig.smilies,
     shorts = smiliesConfig.shorts,
 
     regex = new RegExp(':(' + smilies.join('|') + '):', 'g'),
