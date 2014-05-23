@@ -1,0 +1,27 @@
+{
+  "main": "smile",
+
+  "shorts": {
+    ":D": "biggrin",
+    ":-D": "biggrin",
+    ":S": "confused",
+    ":-S": "confused",
+    ";(": "cry",
+    ";-(": "cry",
+    "OO": "eek",
+    "<3": "like",
+    "^^": "lol",
+    ":|": "neutral",
+    ":-|": "neutral",
+    ":P": "razz",
+    ":-P": "razz",
+    ":(": "sad",
+    ":-(": "sad",
+    ":)": "smile",
+    ":-)": "smile",
+    ":O": "surprised",
+    ":-O": "surprised",
+    ";)": "wink",
+    ";-)": "wink"
+  }
+}

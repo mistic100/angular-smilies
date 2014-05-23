@@ -1,25 +1,14 @@
 /*!
- * Angular Smilies 1.0.1
+ * Angular Smilies
  * Copyright 2014 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
 (function(){
 
     var
-    smilies = [
-        'biggrin', 'confused', 'cool', 'cry', 'eek', 'evil', 'like',
-        'lol', 'love', 'mad', 'mrgreen', 'neutral', 'question', 'razz',
-        'redface', 'rolleyes', 'sad', 'smile', 'surprised', 'thumbdown',
-        'thumbup', 'twisted', 'wink'
-    ],
-
-    shorts = {
-        ':D': 'biggrin', ':-D': 'biggrin', ':S': 'confused', ':-S': 'confused',
-        ';(': 'cry', ';-(': 'cry', 'OO': 'eek', '<3': 'like', '^^': 'lol',
-        ':|': 'neutral', ':-|': 'neutral', ':P': 'razz', ':-P': 'razz',
-        ':(': 'sad', ':-(': 'sad', ':)': 'smile', ':-)': 'smile',
-        ':O': 'surprised', ':-O': 'surprised', ';)': 'wink', ';-)': 'wink'
-    },
+    main = smiliesConfig.main,
+    smilies = smiliesConfig.smilies,
+    shorts = smiliesConfig.shorts,
 
     regex = new RegExp(':(' + smilies.join('|') + '):', 'g'),
     template = '<i class="smiley-$1" title="$1"></i>',
@@ -29,8 +18,8 @@
     },
     
     regExpForShort = function(str) {
-        if (str == 'OO') {
-            return /\bOO\b/gi; // lol boobs
+        if (/^[a-z]+$/i.test(str)) { // use word boundaries if emoji is letters only
+            return new RegExp('\\b'+ str +'\\b', 'gi');
         }
         else {
             return new RegExp(escapeRegExp(str), 'gi');
@@ -125,13 +114,13 @@
     /* popover template */
     .run(['$templateCache', function($templateCache) {
         $templateCache.put('template/smilies/button-a.html',
-            '<i class="smiley-smile smilies-selector" '+
+            '<i class="smiley-'+ main +' smilies-selector" '+
                 'popover-template="template/smilies/popover-a.html" '+
                 'popover-placement="{{!placement && \'left\' || placement}}" '+
                 'popover-title="{{title}}"></i>'
         );
         $templateCache.put('template/smilies/button-b.html',
-            '<i class="smiley-smile smilies-selector" bs-popover '+
+            '<i class="smiley-'+ main +' smilies-selector" bs-popover '+
                 'data-template="template/smilies/popover-b.html" '+
                 'data-placement="{{!placement && \'left\' || placement}}" '+
                 'title="{{title}}"></i>'

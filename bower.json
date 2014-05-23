@@ -1,15 +1,16 @@
 {
   "name": "angular-smilies",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "authors": [{
     "name": "Damien \"Mistic\" Sorel",
     "homepage": "http://www.strangeplanet.fr"
   }],
   "description": "AngularJS filter & directive for smilies parsing",
   "main": [
-    "dist/smilies.js",
-    "dist/smilies.css"
-	],
+    "dist/angular-smilies.min.js",
+    "dist/angular-smilies.min.css",
+    "dist/angular-smilies.png"
+  ],
   "dependencies": {
     "angular": "1.x",
     "angular-sanitize" : "1.x"

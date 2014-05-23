@@ -1,0 +1,6 @@
+/*!
+ * Angular Smilies 1.1.0
+ * Copyright 2014 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Licensed under MIT (http://opensource.org/licenses/MIT)
+ */
+[class*=smiley-]{display:inline-block;background-image:url(angular-smilies.png);background-position:100px 100px;background-repeat:no-repeat;width:18px;height:18px}.smiley-biggrin{background-position:0 0}.smiley-confused{background-position:-18px 0}.smiley-cool{background-position:-36px 0}.smiley-cry{background-position:-54px 0}.smiley-eek{background-position:-72px 0}.smiley-evil{background-position:-90px 0}.smiley-like{background-position:-108px 0}.smiley-lol{background-position:-126px 0}.smiley-love{background-position:-144px 0}.smiley-mad{background-position:-162px 0}.smiley-mrgreen{background-position:-180px 0}.smiley-neutral{background-position:-198px 0}.smiley-question{background-position:-216px 0}.smiley-razz{background-position:-234px 0}.smiley-redface{background-position:-252px 0}.smiley-rolleyes{background-position:-270px 0}.smiley-sad{background-position:-288px 0}.smiley-smile{background-position:-306px 0}.smiley-surprised{background-position:-324px 0}.smiley-thumbdown{background-position:-342px 0}.smiley-thumbup{background-position:-360px 0}.smiley-twisted{background-position:-378px 0}.smiley-wink{background-position:-396px 0}.smilies-selector-content{margin:0 -6px;max-width:130px}
