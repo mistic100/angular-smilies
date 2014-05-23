@@ -6,3 +6,4 @@ Gemfile.lock
 /dist/angular-strap/*
 !/dist/angular-strap/dist
 /dist/angular-strap/dist/modules
+/dist/angular-smilies/src

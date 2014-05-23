@@ -8,8 +8,9 @@
   ],
   "description": "AngularJS filter & directive for smilies parsing",
   "main": [
-    "dist/smilies.js",
-    "dist/smilies.css"
+    "dist/angular-smilies.min.js",
+    "dist/angular-smilies.min.css",
+    "dist/angular-smilies.png"
   ],
   "dependencies": {
     "angular": "1.x",
@@ -39,13 +40,13 @@
     "test",
     "tests"
   ],
-  "_release": "ea455301a8",
+  "_release": "4dd75cf147",
   "_resolution": {
     "type": "branch",
-    "branch": "master",
-    "commit": "ea455301a8a8595e5a16c26a5545d691db50d529"
+    "branch": "grunt-task",
+    "commit": "4dd75cf14711e1813b2a38585a771ec935426d19"
   },
   "_source": "git://github.com/mistic100/angular-smilies.git",
-  "_target": "master",
+  "_target": "grunt-task",
   "_originalSource": "git://github.com/mistic100/angular-smilies.git"
 }

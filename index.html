@@ -63,16 +63,16 @@ isHome: true
 <script src="dist/angular-strap/dist/angular-strap.tpl.min.js"></script>
 <!-- OR <script src="dist/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> -->
 
-<script src="dist/angular-smilies/smilies.js"></script>
+<script src="dist/angular-smilies/dist/angular-smilies.min.js"></script>
 {% endhighlight %}
 
   <p>... and include the stylesheet as well as Bootstrap's one. The embed version contains the smilies sprite coded in base64 where the normal version relies on an external file. The embed version weighs a little more because of the coding but saves one HTTP request.</p>
 {% highlight html %}
 <link rel="stylesheet" href="dist/bootstrap/dist/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="dist/angular-smilies/smilies.css">
+<link rel="stylesheet" href="dist/angular-smilies/dist/angular-smilies.min.css">
 <!-- OR -->
-<link rel="stylesheet" href="dist/angular-smilies/smilies-embed.css">
+<link rel="stylesheet" href="dist/angular-smilies/dist/angular-smilies-embed.min.css">
 {% endhighlight %}
 </section>
 
@@ -110,12 +110,12 @@ var app = angular.module('app', [
   <p>Notice the <code>focusOnChange</code> directive which allow to focus the input when the content changes.</p>
 </section>
 
-<link rel="stylesheet" href="{{site.baseurl}}/dist/angular-smilies/smilies-embed.css">
+<link rel="stylesheet" href="{{site.baseurl}}/dist/angular-smilies/dist/angular-smilies-embed.min.css">
 <script src="{{site.baseurl}}/dist/angular/angular.min.js"></script>
 <script src="{{site.baseurl}}/dist/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="{{site.baseurl}}/dist/angular-strap/dist/angular-strap.min.js"></script>
 <script src="{{site.baseurl}}/dist/angular-strap/dist/angular-strap.tpl.min.js"></script>
-<script src="{{site.baseurl}}/dist/angular-smilies/smilies.js"></script>
+<script src="{{site.baseurl}}/dist/angular-smilies/dist/angular-smilies.min.js"></script>
 
 <script>
 var app = angular.module('app', [
