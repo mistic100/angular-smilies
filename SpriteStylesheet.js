@@ -24,37 +24,37 @@ module.exports = function(layout, filePath, spritePath, options, callback) {
         return true;
     });
 
-    var css = '\
-[class*="'+ options.prefix +'"] {\
-    display:inline-block;\
-    background-image:url('+ options.spritePath +');\
-    background-position:100px 100px;\
+    var css = '\n\
+[class*="'+ options.prefix +'"] {\n\
+    display:inline-block;\n\
+    background-image:url('+ options.spritePath +');\n\
+    background-position:100px 100px;\n\
     background-repeat:no-repeat;';
 
     if (width && height) {
-        css+= '\
-    width:'+ width +'px;\
+        css+= '\n\
+    width:'+ width +'px;\n\
     height:'+ height +'px;';
     }
 
-    css+= '\
+    css+= '\n\
 }';
 
     layout.images.forEach(function(image) {
         var imageName = options.nameMapping(image.path),
             className = utils.prefixString(imageName, options);
 
-        css+= '\
-.'+ className +' {\
+        css+= '\n\
+.'+ className +' {\n\
     background-position:-'+ image.x +'px -'+ image.y +'px;';
 
         if (!width || !height) {
-            css+= '\
-    width:'+ image.width +'px;\
+            css+= '\n\
+    width:'+ image.width +'px;\n\
     height:'+ image.height +'px;';
         }
 
-        css+= '\
+        css+= '\n\
 }';
     });
 
