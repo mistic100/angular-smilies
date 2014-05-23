@@ -78,9 +78,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true, flatten: true,
-                    src: ['dist/<%= pkg.name %>.min.css'],
-                    dest: 'dist/',
-                    ext: '-embed.min.css'
+                    src: ['temp/<%= pkg.name %>.css'],
+                    dest: 'temp/',
+                    ext: '-embed.css'
                 }]
             }
         },
@@ -98,7 +98,7 @@ module.exports = function(grunt) {
 
         // compress css
         cssmin: {
-            normal: {
+            dist: {
                 options: {
                     banner: '<%= banner %>',
                     keepSpecialComments: 0
@@ -106,6 +106,10 @@ module.exports = function(grunt) {
                 files: {
                     'dist/<%= pkg.name %>.min.css': [
                         'temp/<%= pkg.name %>.css',
+                        'src/<%= pkg.name %>.css'
+                    ],
+                    'dist/<%= pkg.name %>-embed.min.css': [
+                        'temp/<%= pkg.name %>-embed.css',
                         'src/<%= pkg.name %>.css'
                     ]
                 }
