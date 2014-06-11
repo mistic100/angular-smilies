@@ -40,13 +40,13 @@
     "test",
     "tests"
   ],
-  "_release": "4dd75cf147",
+  "_release": "4c1a28285c",
   "_resolution": {
     "type": "branch",
-    "branch": "grunt-task",
-    "commit": "4dd75cf14711e1813b2a38585a771ec935426d19"
+    "branch": "master",
+    "commit": "4c1a28285cc3c948f61800e36f8de721de97509a"
   },
   "_source": "git://github.com/mistic100/angular-smilies.git",
-  "_target": "grunt-task",
+  "_target": "master",
   "_originalSource": "git://github.com/mistic100/angular-smilies.git"
 }

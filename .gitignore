@@ -1,6 +1,7 @@
 /_site
 Gemfile.lock
 
+# commit minimum dependencies
 /dist/bootstrap
 /dist/jquery
 /dist/angular-strap/*
