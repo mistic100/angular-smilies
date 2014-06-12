@@ -7,8 +7,8 @@
   }],
   "description": "AngularJS filter & directive for smilies parsing",
   "main": [
-    "dist/angular-smilies.min.js",
-    "dist/angular-smilies.min.css",
+    "dist/angular-smilies.js",
+    "dist/angular-smilies.css",
     "dist/angular-smilies.png"
   ],
   "dependencies": {

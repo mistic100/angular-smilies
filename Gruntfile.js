@@ -23,13 +23,13 @@ module.exports = function(grunt) {
         spriteGenerator: {
             sprite: {
                 src: ['src/smilies/*.png'],
-                spritePath: 'dist/<%= pkg.name %>.png',
-                stylesheetPath: 'temp/<%= pkg.name %>.css',
+                spritePath: 'dist/angular-smilies.png',
+                stylesheetPath: 'temp/smilies-sprite.css',
                 stylesheet: require('./SpriteStylesheet'),
                 layout: 'horizontal',
                 stylesheetOptions: {
                     prefix: 'smiley-',
-                    spritePath: '<%= pkg.name %>.png'
+                    spritePath: 'angular-smilies.png'
                 },
                 compositor: 'gm'
             }
@@ -37,7 +37,13 @@ module.exports = function(grunt) {
 
         // encode sprite in base64
         base64: {
-            'temp/<%= pkg.name %>.png.b64': 'dist/<%= pkg.name %>.png'
+            sprite: {
+                files: {
+                    'temp/angular-smilies.png.b64': [
+                        'dist/angular-smilies.png'
+                    ]
+                }
+            }
         },
 
         // inject smilies config in js file
@@ -62,26 +68,50 @@ module.exports = function(grunt) {
                             })
                     }]
                 },
-                files: [{
-                    expand: true, flatten: true,
-                    src: ['src/<%= pkg.name %>.js'],
-                    dest: 'temp/'
-                }]
+                files: {
+                    'temp/angular-smilies.js': [
+                        'src/angular-smilies.js'
+                    ]
+                }
             },
             css: {
                 options: {
                     usePrefix: false,
                     patterns: [{
-                        match: '<%= pkg.name %>.png',
-                        replacement: 'data:image/png;base64,<%= grunt.file.read("temp/"+ pkg.name +".png.b64") %>'
+                        match: 'angular-smilies.png',
+                        replacement: 'data:image/png;base64,<%= grunt.file.read("temp/angular-smilies.png.b64") %>'
                     }]
                 },
-                files: [{
-                    expand: true, flatten: true,
-                    src: ['temp/<%= pkg.name %>.css'],
-                    dest: 'temp/',
-                    ext: '-embed.css'
-                }]
+                files: {
+                    'temp/smilies-sprite-embed.css': [
+                        'temp/smilies-sprite.css'
+                    ],
+                }
+            }
+        },
+
+        // concat/copy files
+        concat: {
+            options: {
+                banner: '<%= banner %>\n',
+                stripBanners: {
+                    block: true
+                }
+            },
+            src: {
+                files: {
+                    'dist/angular-smilies.css': [
+                        'src/angular-smilies.css',
+                        'temp/smilies-sprite.css'
+                    ],
+                    'dist/angular-smilies-embed.css': [
+                        'src/angular-smilies.css',
+                        'temp/smilies-sprite-embed.css'
+                    ],
+                    'dist/angular-smilies.js': [
+                        'temp/angular-smilies.js'
+                    ]
+                }
             }
         },
 
@@ -91,26 +121,24 @@ module.exports = function(grunt) {
                 banner: '<%= banner %>\n'
             },
             build: {
-                src: 'temp/<%= pkg.name %>.js',
-                dest: 'dist/<%= pkg.name %>.min.js'
+                src: 'dist/angular-smilies.js',
+                dest: 'dist/angular-smilies.min.js'
             }
         },
 
         // compress css
         cssmin: {
+            options: {
+                banner: '<%= banner %>',
+                keepSpecialComments: 0
+            },
             dist: {
-                options: {
-                    banner: '<%= banner %>',
-                    keepSpecialComments: 0
-                },
                 files: {
-                    'dist/<%= pkg.name %>.min.css': [
-                        'temp/<%= pkg.name %>.css',
-                        'src/<%= pkg.name %>.css'
+                    'dist/angular-smilies.min.css': [
+                        'dist/angular-smilies.css'
                     ],
-                    'dist/<%= pkg.name %>-embed.min.css': [
-                        'temp/<%= pkg.name %>-embed.css',
-                        'src/<%= pkg.name %>.css'
+                    'dist/angular-smilies-embed.min.css': [
+                        'dist/angular-smilies.css'
                     ]
                 }
             }
@@ -129,12 +157,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('default', [
         'mkdir',
         'spriteGenerator',
         'base64',
         'replace',
+        'concat',
         'uglify',
         'cssmin',
         'clean'
