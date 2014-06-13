@@ -25,7 +25,7 @@ module.exports = function(grunt) {
                 src: ['src/smilies/*.png'],
                 spritePath: 'dist/angular-smilies.png',
                 stylesheetPath: 'temp/smilies-sprite.css',
-                stylesheet: require('./SpriteStylesheet'),
+                stylesheet: 'prefixed-css',
                 layout: 'horizontal',
                 stylesheetOptions: {
                     prefix: 'smiley-',
