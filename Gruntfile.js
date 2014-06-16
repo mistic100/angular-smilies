@@ -138,7 +138,7 @@ module.exports = function(grunt) {
                         'dist/angular-smilies.css'
                     ],
                     'dist/angular-smilies-embed.min.css': [
-                        'dist/angular-smilies.css'
+                        'dist/angular-smilies-embed.css'
                     ]
                 }
             }
