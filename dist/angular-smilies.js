@@ -1,9 +1,10 @@
 /*!
- * Angular Smilies 1.1.0
- * Copyright 2014 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Angular Smilies 1.2.0
+ * Copyright 2014-2015 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
 (function(){
+    'use strict';
 
     var
     main = "smile",
@@ -16,7 +17,7 @@
     escapeRegExp = function(str) {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     },
-    
+
     regExpForShort = function(str) {
         if (/^[a-z]+$/i.test(str)) { // use word boundaries if emoji is letters only
             return new RegExp('\\b'+ str +'\\b', 'gi');
@@ -88,12 +89,12 @@
             },
             link: function($scope, el) {
                 $scope.smilies = smilies;
-                
+
                 $scope.append = function(smiley) {
                     $scope.source+= ' :'+smiley+': ';
-                    
+
                     $timeout(function() {
-                        el.find('i').triggerHandler('click');
+                        el.children('i').triggerHandler('click'); // close the popover
                     });
                 };
             }
@@ -113,9 +114,11 @@
     })
     /* popover template */
     .run(['$templateCache', function($templateCache) {
+        // use ng-init because popover-template only accept a variable
         $templateCache.put('template/smilies/button-a.html',
             '<i class="smiley-'+ main +' smilies-selector" '+
-                'popover-template="template/smilies/popover-a.html" '+
+                'ng-init="smiliesTemplate = \'template/smilies/popover-a.html\'" '+
+                'popover-template="smiliesTemplate" '+
                 'popover-placement="{{!placement && \'left\' || placement}}" '+
                 'popover-title="{{title}}"></i>'
         );

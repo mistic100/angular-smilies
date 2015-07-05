@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
   <meta charset="utf-8">
 
@@ -9,7 +9,7 @@
 
 <body>
 
-<div class="container" ng-app="app" ng-controller="controller">
+<div class="container" ng-controller="controller">
   <pre ng-bind-html="message | smilies"></pre>
 
   <div class="input-group">
@@ -20,16 +20,16 @@
 
 <script src="../bower_components/angular/angular.min.js"></script>
 <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-<!--<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>-->
-<script src="../bower_components/angular-strap/dist/angular-strap.min.js"></script>
-<script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
-<script src="../dist/angular-smilies.min.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<!-- <script src="../bower_components/angular-strap/dist/angular-strap.min.js"></script> -->
+<!-- <script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script> -->
+<script src="../dist/angular-smilies.js"></script>
 
 <script>
   var app = angular.module('app', [
     'ngSanitize',
-    //'ui.bootstrap', // Angular UI Bootstrap
-    'mgcrea.ngStrap', // Angular Strap
+    'ui.bootstrap', // Angular UI Bootstrap
+    //'mgcrea.ngStrap', // Angular Strap
     'angular-smilies'
   ]);
 

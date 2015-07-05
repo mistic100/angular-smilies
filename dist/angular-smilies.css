@@ -1,11 +1,14 @@
 /*!
- * Angular Smilies 1.1.0
- * Copyright 2014 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Angular Smilies 1.2.0
+ * Copyright 2014-2015 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
 .smilies-selector-content {
     margin:0 -6px;
     max-width:130px;
+}
+[class^='smiley-'], [class*=' smiley-'] {
+    display: inline-block;
 }
 [class^='smiley-'], [class*=' smiley-'] { background-image:url('angular-smilies.png'); width:18px; height:18px; }
 .smiley-biggrin { background-position:0 0; }
