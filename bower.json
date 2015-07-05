@@ -5,7 +5,7 @@
   "dependencies": {
     "angular": "latest",
     "angular-sanitize": "latest",
-    "angular-strap": "latest",
+    "angular-bootstrap": "latest",
     "angular-smilies": "git://github.com/mistic100/angular-smilies.git#master"
   }
 }

@@ -49,7 +49,7 @@ isHome: true
   <p>In order to use the filters (which outputs HTML) you will need the <code>ngBindHtml</code> directive which is part of <a href="https://github.com/angular/bower-angular-sanitize">ngSanitize</a> module.</p>
 
   <h4>Angular Strap &amp; AngularUI</h4>
-  <p>The smiley picker uses Bootstrap Popover as Angular module. You can use either <a href="http://mgcrea.github.io/angular-strap">Angular Strap</a> or <a href="http://angular-ui.github.io/bootstrap">AngularUI</a>. The lastest does not support templates yet, thus you will need to use <a href="https://github.com/jbruni/bootstrap-bower-jbruni">the fork of J Bruni</a>.</p>
+  <p>The smiley picker uses Bootstrap Popover as Angular module. You can use either <a href="http://angular-ui.github.io/bootstrap">AngularUI</a> or <a href="http://mgcrea.github.io/angular-strap">Angular Strap</a>.</p>
 
   <h2 id="includes">Includes</h2>
   <p>The module is available on Bower. Add <code>angular-smilies</code> to your <code>bower.json</code> file or install it manually with <code>bower install angular-smilies</code>.
@@ -59,9 +59,10 @@ isHome: true
 <script src="dist/angular/angular.min.js"></script>
 <script src="dist/angular-sanitize/angular-sanitize.min.js"></script>
 
+<script src="dist/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<!-- OR -->
 <script src="dist/angular-strap/dist/angular-strap.min.js"></script>
 <script src="dist/angular-strap/dist/angular-strap.tpl.min.js"></script>
-<!-- OR <script src="dist/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> -->
 
 <script src="dist/angular-smilies/dist/angular-smilies.min.js"></script>
 {% endhighlight %}
@@ -84,7 +85,7 @@ isHome: true
 {% highlight javascript %}
 var app = angular.module('app', [
   'ngSanitize',
-  'mgcrea.ngStrap', // OR ui.bootstrap
+  'ui.bootstrap', // OR mgcrea.ngStrap
   'angular-smilies'
 ]);
 {% endhighlight %}
@@ -113,14 +114,13 @@ var app = angular.module('app', [
 <link rel="stylesheet" href="{{site.github.url}}/dist/angular-smilies/dist/angular-smilies-embed.min.css">
 <script src="{{site.github.url}}/dist/angular/angular.min.js"></script>
 <script src="{{site.github.url}}/dist/angular-sanitize/angular-sanitize.min.js"></script>
-<script src="{{site.github.url}}/dist/angular-strap/dist/angular-strap.min.js"></script>
-<script src="{{site.github.url}}/dist/angular-strap/dist/angular-strap.tpl.min.js"></script>
+<script src="{{site.github.url}}/dist/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="{{site.github.url}}/dist/angular-smilies/dist/angular-smilies.min.js"></script>
 
 <script>
 var app = angular.module('app', [
   'ngSanitize',
-  'mgcrea.ngStrap',
+  'ui.bootstrap',
   'angular-smilies'
 ]);
 
