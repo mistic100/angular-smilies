@@ -27,6 +27,8 @@
     },
 
     apply = function(input) {
+        if (!input) return '';
+
         var output = input.replace(regex, template);
 
         for (var sm in shorts) {
