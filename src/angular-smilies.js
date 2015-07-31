@@ -97,7 +97,7 @@
 
     }])
     /* helper directive for input focusing */
-    .directive('focusOnChange', function($timeout) {
+    .directive('focusOnChange', function() {
         return {
             restrict: 'A',
             link: function($scope, el, attrs) {
