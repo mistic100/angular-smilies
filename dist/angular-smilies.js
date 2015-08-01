@@ -1,5 +1,5 @@
 /*!
- * Angular Smilies 1.2.0
+ * Angular Smilies 1.2.1
  * Copyright 2014-2015 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
@@ -32,6 +32,8 @@
     },
 
     apply = function(input) {
+        if (!input) return '';
+
         var output = input.replace(regex, template);
 
         for (var sm in shorts) {
@@ -102,7 +104,7 @@
 
     }])
     /* helper directive for input focusing */
-    .directive('focusOnChange', function($timeout) {
+    .directive('focusOnChange', function() {
         return {
             restrict: 'A',
             link: function($scope, el, attrs) {
