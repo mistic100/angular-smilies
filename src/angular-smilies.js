@@ -115,7 +115,7 @@
         $templateCache.put('template/smilies/button-a.html',
             '<i class="smiley-'+ main +' smilies-selector" '+
                 'ng-init="smiliesTemplate = \'template/smilies/popover-a.html\'" '+
-                'popover-template="smiliesTemplate" '+
+                'uib-popover-template="smiliesTemplate" '+
                 'popover-placement="{{!placement && \'left\' || placement}}" '+
                 'popover-title="{{title}}"></i>'
         );
