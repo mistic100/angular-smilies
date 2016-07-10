@@ -85,7 +85,7 @@ module.exports = function(grunt) {
                 files: {
                     'temp/smilies-sprite-embed.css': [
                         'temp/smilies-sprite.css'
-                    ],
+                    ]
                 }
             }
         },
@@ -98,7 +98,14 @@ module.exports = function(grunt) {
                     block: true
                 }
             },
-            src: {
+            js: {
+                files: {
+                    'dist/angular-smilies.js': [
+                        'temp/angular-smilies.js'
+                    ]
+                }
+            },
+            css: {
                 files: {
                     'dist/angular-smilies.css': [
                         'src/angular-smilies.css',
@@ -107,9 +114,6 @@ module.exports = function(grunt) {
                     'dist/angular-smilies-embed.css': [
                         'src/angular-smilies.css',
                         'temp/smilies-sprite-embed.css'
-                    ],
-                    'dist/angular-smilies.js': [
-                        'temp/angular-smilies.js'
                     ]
                 }
             }
@@ -158,6 +162,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
+
+    grunt.registerTask('build_js', [
+        'mkdir',
+        'replace:js',
+        'concat:js',
+        'uglify',
+        'clean'
+    ]);
 
     grunt.registerTask('default', [
         'mkdir',

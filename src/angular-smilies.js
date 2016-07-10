@@ -111,11 +111,9 @@
     })
     /* popover template */
     .run(['$templateCache', function($templateCache) {
-        // use ng-init because popover-template only accept a variable
         $templateCache.put('template/smilies/button-a.html',
             '<i class="smiley-'+ main +' smilies-selector" '+
-                'ng-init="smiliesTemplate = \'template/smilies/popover-a.html\'" '+
-                'uib-popover-template="smiliesTemplate" '+
+                'uib-popover-template="\'template/smilies/popover-a.html\'" '+
                 'popover-placement="{{!placement && \'left\' || placement}}" '+
                 'popover-title="{{title}}"></i>'
         );
