@@ -53,7 +53,7 @@
             scope: {
                 source: '=smilies'
             },
-            link: function($scope, el, attrs) {
+            link: function($scope, el) {
                 el.html(apply($scope.source));
             }
         };
