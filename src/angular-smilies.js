@@ -82,17 +82,20 @@
             scope: {
                 source: '=smiliesSelector',
                 placement: '@smiliesPlacement',
-                title: '@smiliesTitle'
+                title: '@smiliesTitle',
+                keepOpen: '@smiliesKeepOpen'
             },
             link: function($scope, el) {
                 $scope.smilies = smilies;
 
                 $scope.append = function(smiley) {
-                    $scope.source+= ' :'+smiley+': ';
+                    $scope.source += ' :'+smiley+': ';
 
-                    $timeout(function() {
-                        el.children('i').triggerHandler('click'); // close the popover
-                    });
+                    if ($scope.keepOpen === undefined) {
+                        $timeout(function() {
+                            el.children('i').triggerHandler('click'); // close the popover
+                        });    
+                    }
                 };
             }
         };
@@ -115,6 +118,7 @@
             '<i class="smiley-'+ main +' smilies-selector" '+
                 'uib-popover-template="\'template/smilies/popover-a.html\'" '+
                 'popover-placement="{{!placement && \'left\' || placement}}" '+
+                'popover-trigger="outsideClick"' +
                 'popover-title="{{title}}"></i>'
         );
         $templateCache.put('template/smilies/button-b.html',
