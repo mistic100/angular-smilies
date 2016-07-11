@@ -1,7 +1,7 @@
 # name of the software
 name: Angular Smilies
 # current version of the software
-version: 1.2.1
+version: 1.3.0
 # url of the download button
 downloadUrl: https://github.com/mistic100/angular-smilies
 # licence of the software
@@ -10,6 +10,8 @@ licenseUrl: http://opensource.org/licenses/MIT
 
 # list of additional links on the right of the top menu
 headerLinks:
+  - title: GitHub
+    url: https://github.com/mistic100/angular-smilies
   - title: StrangePlanet
     url: http://www.strangeplanet.fr
 
@@ -35,7 +37,7 @@ githubButton:
 twitter:
   enabled: true
   via:
-  hash:
+  hash: angularjs,smilies
   account:
 
 # facebook buttons
@@ -46,11 +48,8 @@ facebook:
 # google analytics
 analytics:
   account: UA-28192323-3
-  domain: mistic100.github.io
+  domain: auto
 
 
 # DON'T MODIFY
-pygments: true
-highlight: pygments
-
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile']

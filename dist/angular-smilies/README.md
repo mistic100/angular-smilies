@@ -1,7 +1,8 @@
-AngularJS Smilies filter & directive
-----------
+# AngularJS Smilies filter & directive
 
-## Documenttation
+[![Bower version](https://badge.fury.io/bo/angular-smilies.svg)](http://badge.fury.io/bo/angular-smilies)
+
+## Documentation
 http://mistic100.github.io/angular-smilies
 
 ## Building

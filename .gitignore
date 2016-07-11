@@ -1,4 +1,6 @@
 /_site
+/.idea
+/*.iml
 Gemfile.lock
 
 # commit minimum dependencies

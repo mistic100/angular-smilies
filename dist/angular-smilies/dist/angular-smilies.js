@@ -1,6 +1,6 @@
 /*!
- * Angular Smilies 1.2.0
- * Copyright 2014-2015 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Angular Smilies 1.3.0
+ * Copyright 2014-2016 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
 (function(){
@@ -9,7 +9,7 @@
     var
     main = "smile",
     smilies = ["biggrin","confused","cool","cry","eek","evil","like","lol","love","mad","mrgreen","neutral","question","razz","redface","rolleyes","sad","smile","surprised","thumbdown","thumbup","twisted","wink"],
-    shorts = {":D":"biggrin",":-D":"biggrin",":S":"confused",":-S":"confused",";(":"cry",";-(":"cry","OO":"eek","<3":"like","^^":"lol",":|":"neutral",":-|":"neutral",":P":"razz",":-P":"razz",":(":"sad",":-(":"sad",":)":"smile",":-)":"smile",":O":"surprised",":-O":"surprised",";)":"wink",";-)":"wink"},
+    shorts = {":D":"biggrin",":-D":"biggrin",":S":"confused",":-S":"confused",";(":"cry",";-(":"cry","OO":"eek","<3":"like","&lt;3":"like","^^":"lol",":|":"neutral",":-|":"neutral",":P":"razz",":-P":"razz",":(":"sad",":-(":"sad",":)":"smile",":-)":"smile",":O":"surprised",":-O":"surprised",";)":"wink",";-)":"wink"},
 
     regex = new RegExp(':(' + smilies.join('|') + '):', 'g'),
     template = '<i class="smiley-$1" title="$1"></i>',
@@ -32,6 +32,8 @@
     },
 
     apply = function(input) {
+        if (!input) return '';
+
         var output = input.replace(regex, template);
 
         for (var sm in shorts) {
@@ -85,24 +87,27 @@
             scope: {
                 source: '=smiliesSelector',
                 placement: '@smiliesPlacement',
-                title: '@smiliesTitle'
+                title: '@smiliesTitle',
+                keepOpen: '@smiliesKeepOpen'
             },
             link: function($scope, el) {
                 $scope.smilies = smilies;
 
                 $scope.append = function(smiley) {
-                    $scope.source+= ' :'+smiley+': ';
+                    $scope.source += ' :'+smiley+': ';
 
-                    $timeout(function() {
-                        el.children('i').triggerHandler('click'); // close the popover
-                    });
+                    if ($scope.keepOpen === undefined) {
+                        $timeout(function() {
+                            el.children('i').triggerHandler('click'); // close the popover
+                        });    
+                    }
                 };
             }
         };
 
     }])
     /* helper directive for input focusing */
-    .directive('focusOnChange', function($timeout) {
+    .directive('focusOnChange', function() {
         return {
             restrict: 'A',
             link: function($scope, el, attrs) {
@@ -114,12 +119,11 @@
     })
     /* popover template */
     .run(['$templateCache', function($templateCache) {
-        // use ng-init because popover-template only accept a variable
         $templateCache.put('template/smilies/button-a.html',
             '<i class="smiley-'+ main +' smilies-selector" '+
-                'ng-init="smiliesTemplate = \'template/smilies/popover-a.html\'" '+
-                'popover-template="smiliesTemplate" '+
+                'uib-popover-template="\'template/smilies/popover-a.html\'" '+
                 'popover-placement="{{!placement && \'left\' || placement}}" '+
+                'popover-trigger="outsideClick"' +
                 'popover-title="{{title}}"></i>'
         );
         $templateCache.put('template/smilies/button-b.html',

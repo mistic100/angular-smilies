@@ -8,18 +8,18 @@
   ],
   "description": "AngularJS filter & directive for smilies parsing",
   "main": [
-    "dist/angular-smilies.min.js",
-    "dist/angular-smilies.min.css",
+    "dist/angular-smilies.js",
+    "dist/angular-smilies.css",
     "dist/angular-smilies.png"
   ],
   "dependencies": {
-    "angular": "1.x",
-    "angular-sanitize": "1.x"
+    "angular": "^1.2.0",
+    "angular-sanitize": "^1.4.0"
   },
   "devDependencies": {
-    "bootstrap": "3.x",
-    "angular-bootstrap": "https://github.com/jbruni/bootstrap-bower-jbruni.git#master",
-    "angular-strap": "2.x"
+    "bootstrap": "^3.2.0",
+    "angular-bootstrap": "^1.0.0",
+    "angular-strap": "^2.2.0"
   },
   "keywords": [
     "angularjs",
@@ -28,7 +28,7 @@
     "emoji"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/mistic100/angular-smilies",
+  "homepage": "http://mistic100.github.io/angular-smilies",
   "repository": {
     "type": "git",
     "url": "git://github.com/mistic100/angular-smilies.git"
@@ -40,11 +40,11 @@
     "test",
     "tests"
   ],
-  "_release": "4c1a28285c",
+  "_release": "dd91a9fece",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "4c1a28285cc3c948f61800e36f8de721de97509a"
+    "commit": "dd91a9fecefb9d25b867c1c0f2ecc8cac6cc6043"
   },
   "_source": "git://github.com/mistic100/angular-smilies.git",
   "_target": "master",

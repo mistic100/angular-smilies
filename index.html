@@ -7,54 +7,77 @@ isHome: true
 
 <!-- intro -->
 <section class="bs-docs-section">
-	<h1 id="overview" class="page-header">Overview</h1>
-  <blockquote>
-    Angular Smilies module exposes a filter and a directive for smilies parsing (replaced by an image) as well as a directive to display a "smiley picker".
-  </blockquote>
+    <h1 id="overview" class="page-header">Overview</h1>
+    <blockquote>
+        Angular Smilies module exposes a filter and a directive for smilies parsing (replaced by an image) as well as a
+        directive to display a "smiley picker".
+    </blockquote>
 
-  <h3 id="example">Example</h3>
-  <p>Edit the input and use the left picker and see the changes on the computed output.</p>
-  <div class="bs-example" ng-app="app" ng-controller="controller">
-    <pre ng-bind-html="message | smilies"></pre>
+    <h3 id="example">Example</h3>
+    <p>Edit the input and use the left picker and see the changes on the computed output.</p>
 
-    <div class="input-group">
-      <span class="input-group-addon" smilies-selector="message" smilies-placement="right"smilies-title="Smilies"></span>
-      <input ng-model="message" focus-on-change="message" class="form-control">
+    <div class="bs-example" ng-app="app" ng-controller="controller">
+        <pre ng-bind-html="message | smilies"></pre>
+
+        <div class="input-group">
+            <span class="input-group-addon"
+                  smilies-selector="message"
+                  smilies-placement="right"
+                  smilies-title="Smilies"></span>
+            <input ng-model="message" focus-on-change="message" class="form-control">
+        </div>
     </div>
-  </div>
+    <!-- @formatter:off -->
 {% highlight html %}
 <p ng-bind-html="message | smilies"></p>
 
 <div class="input-group">
+  <span class="input-group-addon"
+        smilies-selector="message"
+        smilies-placement="right"
+        smilies-title="Smilies"></span>
   <input ng-model="message" focus-on-change="message" class="form-control">
-  <span class="input-group-addon" smilies-selector="message" smilies-placement="right" smilies-title="Smilies"></span>
 </div>
 {% endhighlight %}
+<!-- @formatter:on -->
 
-  <p>Replacement is done in two ways:<p>
-  <ul>
-    <li><code>:something:</code> is replaced by the smiley <b>something</b></li>
-    <li>Some preconfigured emojis are also replaced, see the full list bellow (case insensitive)</li>
-  </ul>
+    <p>Replacement is done in two ways:</p>
+    <ul>
+        <li><code>:something:</code> is replaced by the smiley <b>something</b></li>
+        <li>Some preconfigured emojis are also replaced, see the full list bellow (case insensitive)</li>
+    </ul>
+    <!-- @formatter:off -->
 {% highlight text %}
 :D :-D :S :-S ;( ;-( OO <3 ^^ :| :-| :P :-P :( :-( :) :-) :O :-O ;) ;-)
 {% endhighlight %}
+<!-- @formatter:on -->
 </section>
 
 <section class="bs-docs-section">
-  <h1 id="installation" class="page-header">Installation</h1>
+    <h1 id="installation" class="page-header">Installation</h1>
 
-  <h2 id="dependencies">Dependencies</h2>
-  <h4>ngSanitize</h4>
-  <p>In order to use the filters (which outputs HTML) you will need the <code>ngBindHtml</code> directive which is part of <a href="https://github.com/angular/bower-angular-sanitize">ngSanitize</a> module.</p>
+    <h2 id="dependencies">Dependencies</h2>
+    <h4>ngSanitize</h4>
+    <p>
+        In order to use the filters (which outputs HTML) you will need the <code>ngBindHtml</code> directive which is
+        part of <a href="https://github.com/angular/bower-angular-sanitize">ngSanitize</a> module.
+    </p>
 
-  <h4>Angular Strap &amp; AngularUI</h4>
-  <p>The smiley picker uses Bootstrap Popover as Angular module. You can use either <a href="http://angular-ui.github.io/bootstrap">AngularUI</a> or <a href="http://mgcrea.github.io/angular-strap">Angular Strap</a>.</p>
+    <h4>AngularUI Bootstrap <i>or</i> Angular Strap</h4>
+    <p>
+        The smiley picker uses Bootstrap Popover as Angular module. You can use either
+        <a href="http://angular-ui.github.io/bootstrap">AngularUI Bootstrap</a> or
+        <a href="http://mgcrea.github.io/angular-strap">Angular Strap</a>.
+    </p>
 
-  <h2 id="includes">Includes</h2>
-  <p>The module is available on Bower. Add <code>angular-smilies</code> to your <code>bower.json</code> file or install it manually with <code>bower install angular-smilies</code>.
+    <h2 id="includes">Includes</h2>
+    <p>
+        The module is available on Bower. Add <code>angular-smilies</code> to your <code>bower.json</code> file or
+        install it manually with <code>bower install angular-smilies --save</code>.
+    </p>
 
-  <p>Include the Javascript files...</p>
+    <p>Include the Javascript files...</p>
+    <!-- @formatter:off -->
 {% highlight html %}
 <script src="dist/angular/angular.min.js"></script>
 <script src="dist/angular-sanitize/angular-sanitize.min.js"></script>
@@ -66,8 +89,15 @@ isHome: true
 
 <script src="dist/angular-smilies/dist/angular-smilies.min.js"></script>
 {% endhighlight %}
+<!-- @formatter:on -->
 
-  <p>... and include the stylesheet as well as Bootstrap's one. The embed version contains the smilies sprite coded in base64 where the normal version relies on an external file. The embed version weighs a little more because of the coding but saves one HTTP request.</p>
+    <p>
+        ... and include the stylesheet as well as Bootstrap's one. The embed version contains the smilies sprite coded
+        in
+        base64 where the normal version relies on an external file. The embed version weighs a little more because of
+        the coding but saves one HTTP request.
+    </p>
+    <!-- @formatter:off -->
 {% highlight html %}
 <link rel="stylesheet" href="dist/bootstrap/dist/css/bootstrap.min.css">
 
@@ -75,13 +105,15 @@ isHome: true
 <!-- OR -->
 <link rel="stylesheet" href="dist/angular-smilies/dist/angular-smilies-embed.min.css">
 {% endhighlight %}
+<!-- @formatter:on -->
 </section>
 
 <section class="bs-docs-section">
-  <h1 id="usage" class="page-header">Usage</h1>
+    <h1 id="usage" class="page-header">Usage</h1>
 
-  <h2 id="bootstrap">Bootstrap</h2>
-  <p>Add the necessary modules to your app definition.</p>
+    <h2 id="bootstrap">Bootstrap</h2>
+    <p>Add the necessary modules to your app definition.</p>
+    <!-- @formatter:off -->
 {% highlight javascript %}
 var app = angular.module('app', [
   'ngSanitize',
@@ -89,26 +121,50 @@ var app = angular.module('app', [
   'angular-smilies'
 ]);
 {% endhighlight %}
+<!-- @formatter:on -->
 
-  <h2 id="as-filter">As filter</h2>
-  <p>The module exposes to <code>smilies</code> filter useable with the <code>ngBindHtml</code> directive.</p>
-  {% highlight html %}<div ng-bind-html="message | smilies"></div>{% endhighlight %}
+    <h2 id="as-filter">As filter</h2>
+    <p>The module exposes to <code>smilies</code> filter useable with the <code>ngBindHtml</code> directive.</p>
+    <!-- @formatter:off -->
+{% highlight html %}
+<div ng-bind-html="message | smilies"></div>
+{% endhighlight %}
+<!-- @formatter:on -->
 
-  <h2 id="as-directive">As directive</h2>
-  <p>The module also exposes the <code>smilies</code> directive with data binding.</p>
-  {% highlight html %}<div smilies="message"></div>{% endhighlight %}
+    <h2 id="as-directive">As directive</h2>
+    <p>The module also exposes the <code>smilies</code> directive with data binding.</p>
+    <!-- @formatter:off -->
+{% highlight html %}
+<div smilies="message"></div>
+{% endhighlight %}
+<!-- @formatter:on -->
 
-  <h2 id="picker">Smiley picker</h2>
-  <p>The module includes a smiley selector based on Bootstrap Popover. It allows to display available smilies and append the corresponding code to a model.<br>
-  <br>Example with Bootstrap forms:</p>
+    <h2 id="picker">Smiley picker</h2>
+    <p>
+        The module includes a smiley selector based on Bootstrap Popover. It allows to display available smilies and
+        append the corresponding code to a model.
+    </p>
+
+    <p>Example with Bootstrap forms:</p>
+    <!-- @formatter:off -->
 {% highlight html %}
 <div class="input-group">
+  <span class="input-group-addon"
+        smilies-selector="message"
+        smilies-placement="right"
+        smilies-title="Smilies"></span>
   <input ng-model="message" focus-on-change="message" class="form-control">
-  <span class="input-group-addon" smilies-selector="message" smilies-placement="right" smilies-title="Smilies"></span>
 </div>
 {% endhighlight %}
-  
-  <p>Notice the <code>focusOnChange</code> directive which allow to focus the input when the content changes.</p>
+<!-- @formatter:on -->
+
+    <p>Notice the <code>focusOnChange</code> directive which allow to focus the input when the content changes.</p>
+
+    <p>
+        You can add <code>smiliesKeepOpen</code> attribute to the selector to not automatically close the Popover when
+        the user click on a smiley. The Popover is still closeable by clicking again on the selector and anywhere
+        on the page (<b>AngularUI Bootstrap</b> only).
+    </p>
 </section>
 
 <link rel="stylesheet" href="{{site.github.url}}/dist/angular-smilies/dist/angular-smilies-embed.min.css">
@@ -118,13 +174,13 @@ var app = angular.module('app', [
 <script src="{{site.github.url}}/dist/angular-smilies/dist/angular-smilies.min.js"></script>
 
 <script>
-var app = angular.module('app', [
-  'ngSanitize',
-  'ui.bootstrap',
-  'angular-smilies'
-]);
+    var app = angular.module('app', [
+        'ngSanitize',
+        'ui.bootstrap',
+        'angular-smilies'
+    ]);
 
-app.controller('controller', function($scope) {
-  $scope.message = 'I love this plugin :-) :thumbup: <3';
-});
+    app.controller('controller', function($scope) {
+        $scope.message = 'I love this plugin :-) :thumbup: <3';
+    });
 </script>
