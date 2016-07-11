@@ -82,7 +82,8 @@
             scope: {
                 source: '=smiliesSelector',
                 placement: '@smiliesPlacement',
-                title: '@smiliesTitle'
+                title: '@smiliesTitle',
+                keepOpen: '@smiliesKeepOpen'
             },
             link: function($scope, el, attrs) {
                 $scope.smilies = smilies;
@@ -90,10 +91,11 @@
                 $scope.append = function(smiley) {
                     $scope.source += ' :'+smiley+': ';
 
-                    if (attrs.smiliesClose === '')
+                    if ($scope.keepOpen === undefined) {
                         $timeout(function() {
                             el.children('i').triggerHandler('click'); // close the popover
-                        });
+                        });    
+                    }
                 };
             }
         };
@@ -118,6 +120,7 @@
                 'ng-init="smiliesTemplate = \'template/smilies/popover-a.html\'" '+
                 'uib-popover-template="smiliesTemplate" '+
                 'popover-placement="{{!placement && \'left\' || placement}}" '+
+                'popover-trigger="outsideClick"' +
                 'popover-title="{{title}}"></i>'
         );
         $templateCache.put('template/smilies/button-b.html',
