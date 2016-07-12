@@ -6,12 +6,9 @@
 http://mistic100.github.io/angular-smilies
 
 ## Building
-Uses Grunt to build the source. You will need ImageMagick and GraphicsMagick.
+Uses Grunt to build the source.
 
 ```
-apt-get install imagemagick
-apt-get install graphicsmagick
-
 npm install
 grunt
 ```
@@ -26,4 +23,4 @@ The Grunt tasks are:
 
 You can easily change smilies by placing them in the `src/smilies` directory. Currently, only PNG files are supported.
 
-The `config.json` file must be provided, it configure the smiley used for picker button (`main` parameter) and list of custom replacement (`shorts` parameter, can be empty).
+The `config.json` file must be provided, it configure the smiley used for picker button (`main` parameter) and list of custom replacement (`emojis` parameter, can be empty).

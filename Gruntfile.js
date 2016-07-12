@@ -1,53 +1,49 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+    'use strict';
+
+    grunt.util.linefeed = '\n';
+
+    require('time-grunt')(grunt);
+    require('jit-grunt')(grunt, {
+        spriteGenerator: 'node-sprite-generator'
+    });
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         config: grunt.file.readJSON('src/smilies/config.json'),
 
-        banner:
-            '/*!\n'+
-            ' * Angular Smilies <%= pkg.version %>\n'+
-            ' * Copyright 2014-<%= grunt.template.today("yyyy") %> Damien "Mistic" Sorel (http://www.strangeplanet.fr)\n'+
-            ' * Licensed under MIT (http://opensource.org/licenses/MIT)\n'+
-            ' */',
+        banner: '/*!\n' +
+        ' * Angular Smilies <%= pkg.version %>\n' +
+        ' * Copyright 2014-<%= grunt.template.today("yyyy") %> Damien "Mistic" Sorel (http://www.strangeplanet.fr)\n' +
+        ' * Licensed under MIT (http://opensource.org/licenses/MIT)\n' +
+        ' */',
 
-        // create output dirs
-        mkdir: {
-            all: {
-                options: {
-                    create: ['temp', 'dist']
-                }
-            }
-        },
-
-        // generate sprite
         spriteGenerator: {
+            // generate sprite
             sprite: {
                 src: ['src/smilies/*.png'],
                 spritePath: 'dist/angular-smilies.png',
-                stylesheetPath: 'temp/smilies-sprite.css',
+                stylesheetPath: 'dist/angular-smilies.css',
                 stylesheet: 'prefixed-css',
                 layout: 'horizontal',
                 stylesheetOptions: {
                     prefix: 'smiley-',
                     spritePath: 'angular-smilies.png'
                 },
-                compositor: 'gm'
+                compositor: 'jimp'
             }
         },
 
-        // encode sprite in base64
         base64: {
+            // encode sprite in base64
             sprite: {
-                files: {
-                    'temp/angular-smilies.png.b64': [
-                        'dist/angular-smilies.png'
-                    ]
-                }
+                src: 'dist/angular-smilies.png',
+                dest: 'dist/angular-smilies.png.b64'
             }
         },
 
-        // inject smilies config in js file
         replace: {
+            // inject smilies config in js file
             js: {
                 options: {
                     usePrefix: false,
@@ -55,42 +51,33 @@ module.exports = function(grunt) {
                         match: "smiliesConfig.main",
                         replacement: '"<%= config.main %>"'
                     }, {
-                        match: "smiliesConfig.shorts",
-                        replacement: '<%= config.shorts %>'
+                        match: "smiliesConfig.emojis",
+                        replacement: '<%= config.emojis %>'
                     }, {
                         match: "smiliesConfig.smilies",
-                        replacement:
-                            grunt.file.expandMapping('src/smilies/*.png', '', {
-                                flatten: true, ext: ''
-                            })
-                            .map(function(file) {
+                        replacement: grunt.file.expandMapping('src/smilies/*.png', '', { flatten: true, ext: '' })
+                            .map(function (file) {
                                 return file.dest;
                             })
                     }]
                 },
-                files: {
-                    'temp/angular-smilies.js': [
-                        'src/angular-smilies.js'
-                    ]
-                }
+                src: 'src/angular-smilies.js',
+                dest: 'dist/angular-smilies.js'
             },
+            // generate CSS file with base64
             css: {
                 options: {
                     usePrefix: false,
                     patterns: [{
                         match: 'angular-smilies.png',
-                        replacement: 'data:image/png;base64,<%= grunt.file.read("temp/angular-smilies.png.b64") %>'
+                        replacement: 'data:image/png;base64,<%= grunt.file.read("dist/angular-smilies.png.b64") %>'
                     }]
                 },
-                files: {
-                    'temp/smilies-sprite-embed.css': [
-                        'temp/smilies-sprite.css'
-                    ]
-                }
+                src: 'dist/angular-smilies.css',
+                dest: 'dist/angular-smilies-embed.css'
             }
         },
 
-        // concat/copy files
         concat: {
             options: {
                 banner: '<%= banner %>\n',
@@ -98,29 +85,44 @@ module.exports = function(grunt) {
                     block: true
                 }
             },
+            // add banner to JS files
             js: {
-                files: {
-                    'dist/angular-smilies.js': [
-                        'temp/angular-smilies.js'
-                    ]
-                }
+                src: 'dist/angular-smilies.js',
+                dest: 'dist/angular-smilies.js'
             },
+            // concat CSS files and add banner
             css: {
                 files: {
                     'dist/angular-smilies.css': [
                         'src/angular-smilies.css',
-                        'temp/smilies-sprite.css'
+                        'dist/angular-smilies.css'
                     ],
                     'dist/angular-smilies-embed.css': [
                         'src/angular-smilies.css',
-                        'temp/smilies-sprite-embed.css'
+                        'dist/angular-smilies-embed.css'
                     ]
                 }
+            },
+            // add banner to minified CSS
+            cssmin: {
+                files: [{
+                    expand: true,
+                    src: ['dist/*.min.css'],
+                    dest: ''
+                }]
             }
         },
 
-        // compress js
+        ngAnnotate: {
+            // add safe angular injections
+            app: {
+                src: 'dist/angular-smilies.js',
+                dest: 'dist/angular-smilies.js'
+            }
+        },
+
         uglify: {
+            // compress js
             options: {
                 banner: '<%= banner %>\n'
             },
@@ -130,55 +132,64 @@ module.exports = function(grunt) {
             }
         },
 
-        // compress css
         cssmin: {
-            options: {
-                banner: '<%= banner %>',
-                keepSpecialComments: 0
-            },
+            // compress css
             dist: {
-                files: {
-                    'dist/angular-smilies.min.css': [
-                        'dist/angular-smilies.css'
-                    ],
-                    'dist/angular-smilies-embed.min.css': [
-                        'dist/angular-smilies-embed.css'
-                    ]
-                }
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: ['dist/*.css', '!dist/*.min.css'],
+                    dest: 'dist',
+                    ext: '.min.css',
+                    extDot: 'last'
+                }]
             }
         },
 
-        // remove temp dir
         clean: {
-            temp: ['temp']
+            // remove base64 file
+            base64: ['dist/angular-smilies.png.b64']
+        },
+
+        jshint: {
+            // js tests
+            lib: {
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+                src: ['src/angular-smilies.js', 'Gruntfile.js']
+            }
         }
     });
 
-    grunt.loadNpmTasks('grunt-mkdir');
-    grunt.loadNpmTasks('node-sprite-generator');
-    grunt.loadNpmTasks('grunt-base64');
-    grunt.loadNpmTasks('grunt-replace');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-
     grunt.registerTask('build_js', [
-        'mkdir',
         'replace:js',
         'concat:js',
-        'uglify',
-        'clean'
+        'ngAnnotate',
+        'uglify'
+    ]);
+
+    grunt.registerTask('build_css', [
+        'spriteGenerator',
+        'base64:sprite',
+        'replace:css',
+        'concat:css',
+        'cssmin',
+        'concat:cssmin',
+        'clean:base64'
+    ]);
+
+    grunt.registerTask('test', [
+        'jshint'
+    ]);
+
+    grunt.registerTask('build', [
+        'build_js',
+        'build_css'
     ]);
 
     grunt.registerTask('default', [
-        'mkdir',
-        'spriteGenerator',
-        'base64',
-        'replace',
-        'concat',
-        'uglify',
-        'cssmin',
-        'clean'
+        'test',
+        'build'
     ]);
 };

@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../dist/angular-smilies-embed.min.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/angular-smilies-embed.min.css">
 </head>
 
 <body>
 
-<div class="container" ng-controller="controller">
-  <pre ng-bind-html="message | smilies"></pre>
+<div class="container" ng-controller="controller" style="margin-top: 2em;">
+    <pre ng-bind-html="message | smilies"></pre>
 
-  <div class="input-group">
-    <span class="input-group-addon" smilies-selector="message" smilies-placement="bottom" smilies-title="Smilies"></span>
-    <input ng-model="message" focus-on-change="message" class="form-control">
-  </div>
+    <div class="input-group">
+        <span class="input-group-addon" smilies-selector="message" smilies-placement="bottom"
+              smilies-title="Smilies"></span>
+        <input ng-model="message" focus-on-change="message" class="form-control">
+    </div>
 </div>
 
 <script src="../bower_components/angular/angular.min.js"></script>
@@ -26,16 +27,23 @@
 <script src="../dist/angular-smilies.js"></script>
 
 <script>
-  var app = angular.module('app', [
-    'ngSanitize',
-    'ui.bootstrap', // Angular UI Bootstrap
-    //'mgcrea.ngStrap', // Angular Strap
-    'angular-smilies'
-  ]);
+    var app = angular.module('app', [
+        'ngSanitize',
+        'ui.bootstrap', // Angular UI Bootstrap
+        //'mgcrea.ngStrap', // Angular Strap
+        'angular-smilies'
+    ]);
 
-  app.controller('controller', function($scope) {
-    $scope.message = 'I love this plugin :-) :thumbup: <3';
-  });
+    app.config(function (smiliesParserProvider) {
+        smiliesParserProvider.setMainSmiley('lol');
+        smiliesParserProvider.removeSmiley('twisted');
+        smiliesParserProvider.addEmoji('ಠ_ಠ', 'eek');
+        //smiliesParserProvider.alwaysUseBoundaries(true);
+    });
+
+    app.controller('controller', function ($scope) {
+        $scope.message = 'ಠ_ಠ I love this plugin :thumbup: <3';
+    });
 </script>
 
 </body>

@@ -1,7 +1,8 @@
 .smilies-selector-content {
-    margin:0 -6px;
-    max-width:130px;
+    margin: 0 -6px;
+    max-width: 130px;
 }
+
 [class^='smiley-'], [class*=' smiley-'] {
     display: inline-block;
 }

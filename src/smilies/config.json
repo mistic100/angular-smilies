@@ -1,7 +1,7 @@
 {
   "main": "smile",
 
-  "shorts": {
+  "emojis": {
     ":D": "biggrin",
     ":-D": "biggrin",
     ":S": "confused",

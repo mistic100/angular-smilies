@@ -1,0 +1,8 @@
+{
+  "globals": {
+    "smiliesConfig": true,
+    "angular": true,
+    "module": true,
+    "require": true
+  }
+}
