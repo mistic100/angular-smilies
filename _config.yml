@@ -35,20 +35,20 @@ githubButton:
 
 # twitter buttons
 twitter:
-  enabled: true
+  enabled: false
   via:
-  hash: angularjs,smilies
+  hash:
   account:
 
 # facebook buttons
 facebook:
-  enabled: true
+  enabled: false
   profileUrl:
 
 # google analytics
 analytics:
-  account: UA-28192323-3
-  domain: auto
+  account:
+  domain:
 
 
 # DON'T MODIFY
